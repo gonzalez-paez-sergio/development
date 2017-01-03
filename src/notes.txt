@@ -1,0 +1,2 @@
+Definition.
+A directed acyclic graph (DAG) is a digraph with no directed cycles.
