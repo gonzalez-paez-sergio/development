@@ -1,14 +1,14 @@
+package graphs;
+
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
-import graphs.Graph;
-import graphs.Search;
 
-public class TestSearchUsingGraph {
-	public static void main(String[] args)	{
+public class TestSearch {
+	public static void main(String[] args) {
 		Graph G = new Graph(new In(args[0]));
 		int s = Integer.parseInt(args[1]);
 		Search search = new Search(G, s);
-		for (int v = 0; v < G.V(); v++) 
+		for (int v = 0; v < G.V(); v++)
 			if (search.intMarked(v))
 				StdOut.print(v + " ");
 		StdOut.println();

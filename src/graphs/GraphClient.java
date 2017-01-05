@@ -40,9 +40,11 @@ public class GraphClient {
     // maximum degree 
     public static int maxDegree(Graph G) {
         int max = 0;
-        for (int v = 0; v < G.V(); v++)
-            if (G.degree(v) > max)
+        for (int v = 0; v < G.V(); v++){
+            if (G.degree(v) > max){
                 max = G.degree(v);
+			}
+		}
         return max;
     }
 
@@ -55,9 +57,11 @@ public class GraphClient {
     // number of self-loops
     public static int numberOfSelfLoops(Graph G) {
         int count = 0;
-        for (int v = 0; v < G.V(); v++)
-            for (int w : G.adj(v))
+        for (int v = 0; v < G.V(); v++){
+            for (int w : G.adj(v)){
                 if (v == w) count++;
+			}
+		}
         return count/2;   // self loop appears in adjacency list twice
     } 
 

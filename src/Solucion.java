@@ -3,7 +3,7 @@ import java.util.TreeSet;
 import java.util.SortedSet;
 import java.util.Iterator;
 
-public class Solucion { 
+public class Solucion {  
 
 	
 	static TreeSet treeSet = new TreeSet();

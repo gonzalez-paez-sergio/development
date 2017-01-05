@@ -1,3 +1,8 @@
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+import fundamentals.Bag;
+import graphs.Digraph;
+
 public class DirectedDFS {
 	private boolean[] marked;
 	

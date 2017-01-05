@@ -1,9 +1,14 @@
+package graphs;
+
+import edu.princeton.cs.algs4.In;
+import fundamentals.Bag;
+
 public class Digraph {
 	private final int V;
 	private int E;
 	private Bag<Integer>[] adj;
 	
-	public Graph(In in) {
+	public Digraph(In in) {
 		this(in.readInt()); // Read V and construct this graph.
 		int E = in.readInt(); // Read E.
 		for (int i = 0; i < E; i++)		{ // Add an edge.
