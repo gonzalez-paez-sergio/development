@@ -35,6 +35,7 @@ public class BinarySearch {
 //		5
 
 	public static void main(String[] args) {
+
 		int[] whitelist = In.readInts(args[0]);
 		Arrays.sort(whitelist);
 		while (!StdIn.isEmpty()){ // Read key, print if not in whitelist.
@@ -43,6 +44,6 @@ public class BinarySearch {
 			if (rank(key, whitelist, 0, whitelist.length - 1) < 0){
 				StdOut.println(key);
 			}
-		}
+		}System.out.println("1");
 	}
 }
