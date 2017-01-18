@@ -1,7 +1,5 @@
 package graphs;
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
 import fundamentals.Stack;
 
 public class DepthFirstPaths
@@ -33,7 +31,7 @@ public class DepthFirstPaths
 	public Iterable<Integer> pathToOriginal(int v) {
 		if (!hasPathTo(v)) 
 			return null;
-		Stack<Integer> path = new Stack<Integer>();
+		Stack<Integer> path = new Stack<Integer>(v);
 		for (int x = v; x != s; x = edgeTo[x]){
 			path.push(x);
 		}
@@ -46,7 +44,7 @@ public class DepthFirstPaths
 	public Stack<Integer> pathTo(int v) {
 		if (!hasPathTo(v)) 
 			return null;
-		Stack<Integer> path = new Stack<Integer>();
+		Stack<Integer> path = new Stack<Integer>(v);
 		for (int x = v; x != s; x = edgeTo[x]){
 			path.push(x);
 		}

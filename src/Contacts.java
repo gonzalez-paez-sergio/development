@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.Iterator;
 
+import search.BinarySearchST;
+
 public class Contacts {
 	
 	static BinarySearchST st;
