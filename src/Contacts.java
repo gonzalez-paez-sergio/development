@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.Iterator;
 
+import search.BinarySearchST;
+
 public class Contacts {
 	
 	static BinarySearchST st;
@@ -35,22 +37,14 @@ public class Contacts {
 		int intCounter = 0;			
 		int intIterations = 0;			
 		if (intRank == 0) { 
-			System.out.printf("%d, rank==0 %d, iterations %d, first element %s, current element [%s], current length [%d]\n", intCounter, intRank, intIterations, st.getFirst(), string, st.size());
+			System.out.printf("counter %d, rank==0 %d, iterations %d, first element %s, current element [%s], current length [%d]\n", intCounter, intRank, intIterations, st.getFirst(), string, st.size());
 			return;
-		//	System.out.println(0);
-//			if (st.getFirst().compareTo(string) == 0) { 
-//				System.out.printf("%d, rank=0 %d, iterations %d, first element %s, current element [%s], current length [%d]\n", intCounter, intRank, intIterations, st.getFirst(), string, st.size());
-//				//System.out.println(0);
-//				return;
-//			} else if (st.getFirst().compareTo(string) > 0) { 
-//				System.out.printf("%d, rank>0 %d, iterations %d, first element %s, current element [%s], current length [%d]\n", intCounter, intRank, intIterations, st.getFirst(), string, st.size());
-//				//System.out.println(0);
-//				return;
-//			} else {
-//			
-//				System.out.printf("%d, rank<0 %d, iterations %d, first element %s, current element [%s], current length [%d]\n", intCounter, intRank, intIterations, st.getFirst(), string, st.size());
-//				return;
-//			}
+		} else if (intRank > 0) {
+			System.out.printf("counter %d, rank >0 %d, iterations %d, first element %s, current element [%s], current length [%d]\n", intCounter, intRank, intIterations, st.getFirst(), string, st.size());
+			return;
+		} else if (intRank < 0) {
+			System.out.printf("counter %d, rank< 0 %d, iterations %d, first element %s, current element [%s], current length [%d]\n", intCounter, intRank, intIterations, st.getFirst(), string, st.size());
+			return;
 		}
 		
 		//System.out.printf("key %s, rank %d, st length %d\n", string, intRank, st.size());

@@ -1,124 +1,82 @@
-import java.util.Scanner;
-import java.util.TreeSet;
-import java.util.SortedSet;
-import java.util.Iterator;
+import edu.princeton.cs.algs4.StdIn;
 
-public class Solucion {  
+public class Solucion {
 
-	
-	static TreeSet treeSet = new TreeSet();
+	static Node root = new Node();
+
+	public static class Node {
+		int size;
+		private static int N = 26;
+		Node[] children = new Node[N];
+
+		private static int getCharIndex(char c) {
+			return c - 'a';
+		}
+
+		private Node getNode(char c) {
+			return children[getCharIndex(c)];
+		}
+
+		private char getChar(Node node) {
+			return getNodeIndex(node);
+		}
+
+		private char getNodeIndex(Node node) {
+			for (int i = 0; i < children.length; i++) {
+				if (node == children[i]) {
+					return (char) ('a' + i);
+				}
+			}
+			return 0;
+		}
+
+		private void setNode(char c, Node node) {
+			children[getCharIndex(c)] = node;
+		}
+
+		public void add(String string) {
+			add(string, 0);
+		}
+
+		public void add(String string, int index) {
+			//print(this);
+			size++;
+
+			if (index == string.length()) {
+				return;
+			}
+
+			char current = string.charAt(index);
+
+			System.out.printf("child[%d]=%c,%d\n", index, current,
+					getCharIndex(current));
+			
+			Node child = getNode(current);
+			if (child == null) {
+				child = new Node();
+				setNode(current, child);
+			}
+			child.add(string, index + 1);
+		}
+
+		private void print(Node node) {
+			for (int i = 0; i < node.children.length; i++) {
+				System.out.printf("val[%d]=%s,", i, getNodeIndex(node.children[i]));
+			}
+			System.out.println();
+		}
+	}
 
 	public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int t = in.nextInt();
-		long begin = System.currentTimeMillis();
-	    for(int i = 0; i <= t; i++){
-            String s = in.nextLine();
-			evaluate(s);
-        }
 
-		System.out.printf(
-			"total %d\n" , System.currentTimeMillis() -begin
-	    );
-    }
+		// Node node = new Node();
+		// build symbol table from standard input
+		for (; !StdIn.isEmpty();) {
+			String key = StdIn.readString();
+			System.out.printf("adding key %s\n", key);
 
-	public static void evaluate(String stringLine){
-		String[] stringArray = stringLine.split(" ");
-		if ("add".equals(stringArray[0])){
-			treeSet.add(stringArray[1]);
-		} else if ("find".equals(stringArray[0])){
-			System.out.println(
-				find2 (stringArray[1])
-			);
-		}
-	}
-
-	public static int find(String string){
-		String stringFloor = (String) treeSet.floor(string);
-		if (null == stringFloor){
-			return 0;
-		} 
-
-		int intCounter = 0;
-		SortedSet treeSet1 = treeSet.tailSet(stringFloor);
-		Iterator iterator = treeSet1.iterator();
-		while (iterator.hasNext()) {
-			String stringItem = (String)iterator.next();
-			if (stringItem.startsWith(string)){
-				intCounter++;
-			}
+			root.add(key);
 		}
 
-		return intCounter;
-	}
-	
-	public static int find1(String string){
-		int intCounter = 0;
-		Iterator iterator = treeSet.descendingIterator();
-		while (iterator.hasNext()) {
-			String stringItem = (String)iterator.next();
-			if (stringItem.startsWith(string)){
-				intCounter++;
-			}
-		}
-		return intCounter;
-	}
-
-	public static int find2(String string){
-		int intCounter = 0;
-		boolean boleanFound=false;
-		Iterator iterator = treeSet.descendingIterator();
-		while (iterator.hasNext()) {
-			String stringItem = (String)iterator.next();
-			if (stringItem.startsWith(string)){
-				intCounter++;
-				boleanFound=true;
-			} else if (boleanFound)	{
-				break;
-			}
-		}
-		return intCounter;
-	}
-
-	public static int find3(String string){
-		String stringFloor = (String) treeSet.floor(string);
-		if (null == stringFloor){
-			return 0;
-		} 
-		
-		int intCounter = 0;
-		boolean boleanFound=false;
-		Iterator iterator = treeSet.descendingIterator();
-		while (iterator.hasNext()) {
-			String stringItem = (String)iterator.next();
-			if (stringItem.startsWith(string)){
-				intCounter++;
-				boleanFound=true;
-			} else if (boleanFound)	{
-				break;
-			}
-		}
-		return intCounter;
-	}
-
-	public static int find4(String string){
-		String stringFloor = (String) treeSet.floor(string);
-		if (null == stringFloor){
-			return 0;
-		} 
-		
-		int intCounter = 0;
-		boolean boleanFound=false;
-		Iterator iterator = treeSet.descendingIterator();
-		while (iterator.hasNext()) {
-			String stringItem = (String)iterator.next();
-			if (stringItem.startsWith(string)){
-				intCounter++;
-				boleanFound=true;
-			} else if (boleanFound)	{
-				break;
-			}
-		}
-		return intCounter;
 	}
 }

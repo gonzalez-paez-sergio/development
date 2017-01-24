@@ -1,5 +1,4 @@
-import java.util.Scanner;
-
+package search;
 import fundamentals.Queue;
 
 public class BinarySearchST<Key extends Comparable<Key>, Value> {
