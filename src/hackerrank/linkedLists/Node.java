@@ -1,3 +1,5 @@
+package hackerrank.linkedLists;
+
 
 public class Node {
 	

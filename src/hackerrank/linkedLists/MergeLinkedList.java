@@ -1,4 +1,4 @@
-import java.awt.print.Printable;
+package hackerrank.linkedLists;
 
 public class MergeLinkedList {
 

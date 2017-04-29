@@ -1,3 +1,5 @@
+package hackerrank.linkedLists;
+
 public class GetNodeValue {
 
 	public static void main(String[] string) {
