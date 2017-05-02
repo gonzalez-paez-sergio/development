@@ -1,5 +1,7 @@
 package fundamentals;
 
+import java.util.Iterator;
+
 public class Stack<Item> {
 	private Item[] a; // stack entries
 	private int N; // size
@@ -41,6 +43,7 @@ public class Stack<Item> {
 
 	private void resize(int max) { // Move stack of size N <= max to a new array
 									// of size max.
+		@SuppressWarnings("unchecked")
 		Item[] temp = (Item[]) new Object[max];
 		for (int i = 0; i < N; i++) {
 			temp[i] = a[i];

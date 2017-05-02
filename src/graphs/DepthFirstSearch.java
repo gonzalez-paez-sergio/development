@@ -13,14 +13,18 @@ public class DepthFirstSearch {
 		marked[v] = true;
 		count++;
 		for (int w : G.adj(v))
-			if (!marked[w]) dfs(G, w);
+			// we can use this because we are indexing que vortex with numbers,
+			// so we only need to visit once every vertex
+			if (!marked[w]) {
+				dfs(G, w);
+			}
 	}
 
-	public boolean marked(int w) { 
-		return marked[w]; 
+	public boolean marked(int w) {
+		return marked[w];
 	}
 
 	public int count() {
-		return count; 
+		return count;
 	}
 }
