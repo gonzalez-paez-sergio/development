@@ -2,7 +2,7 @@ package fundamentals;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
-import fundamentals.linkedList.Bag;
+import fundamentals.Bag;
 
 public class StatsUsingBag {
 	public static void main(String[] args) {

@@ -1,3 +1,5 @@
+package fundamentals.linkedList;
+
 
 public class Node<Item> {
 

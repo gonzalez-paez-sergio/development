@@ -1,0 +1,20 @@
+        3
+       / \
+      /   \
+     2     6
+    / \   / \
+   1   4 5   7
+
+
+
+isBST (N(3), MIN, MAX)
+	MIN<3
+	3<MAX
+	isBST (N(2), MIN, 3)
+		MIN<2
+		2<3
+		isBST (N(1), MIN, 2)
+			MIN<1
+			1<2
+	isBST (N(2), 3, MAX)
+		3<2 -----false

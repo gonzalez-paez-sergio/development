@@ -1,13 +1,21 @@
 package fundamentals;
 
-import java.util.Iterator;
-
 public class Stack<Item> {
 	private Item[] a; // stack entries
 	private int N; // size
 
+	@SuppressWarnings("unchecked")
 	public Stack(int cap) {
 		a = (Item[]) new Object[cap];
+	}
+
+	/**
+	 * new constructor for dynamic resizing
+	 */
+
+	@SuppressWarnings("unchecked")
+	public Stack() {
+		a = (Item[]) new Object[1];
 	}
 
 	public boolean isEmpty() {
