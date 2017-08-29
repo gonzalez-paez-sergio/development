@@ -1,32 +1,40 @@
 package sort;
 
 public class Insertion {
-	public static void sort(Comparable[] a) { // Sort a[] into increasing order.
+	public static void sort(Comparable[] a) {
 		int N = a.length;
-		for (int i = 1; i < N; i++) { // Insert a[i] among a[i-1], a[i-2], a[i-3]... ..
-			for (int j = i; j > 0 && less(a[j], a[j-1]); j--)
-				exch(a, j, j-1);
-			}
+		for (int i = 1; i < N; i++) {
+			for (int j = i; j > 0 && less(a[j], a[j - 1]); j--)
+				exch(a, j, j - 1);
 		}
-// See page 245 for less(), exch(), isSorted(), and main().
+	}
 
 	private static boolean less(Comparable comparable, Comparable comparable2) {
-		// TODO Auto-generated method stub
-		return false;
+		return comparable.compareTo(comparable2) < 0;
 	}
 
 	private static void exch(Comparable[] a, int j, int i) {
-		// TODO Auto-generated method stub
-		
+
+		Comparable tmp = a[j];
+		a[j] = a[i];
+		a[i] = tmp;
+
+	}
+
+	public static void print(Comparable[] A) {
+		for (int i = 0; i < A.length; i++) {
+			System.out.print(A[i] + " ");
+		}
+
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Comparable[] a = { 23, 42, 4, 16, 8, 15 };
+		Insertion I = new Insertion();
+
+		I.print(a);
+		I.sort(a);
+		I.print(a);
 	}
 }
-
-	//shellsort
-//	while (h >= 1) { // h-sort the array.
-//		for (int i = h; i < N; i++) { // 
-//			for (int j = i; j > h && less(a[j], a[j - h]); j -= h) {
-//				exch(a, j, j - h);
-//			}
-//		}
-//		h = h / 3;
-//	}

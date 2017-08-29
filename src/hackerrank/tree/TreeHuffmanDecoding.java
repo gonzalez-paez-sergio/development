@@ -1,7 +1,7 @@
 package hackerrank.tree;
 
 /**
-*<pre>
+ * <pre>
 Huffman coding assigns variable length codewords to fixed length input characters based on their frequencies. More frequent characters are assigned shorter codewords and less frequent characters are assigned longer codewords. A Huffman tree is made for the input string and characters are decoded based on their position in the tree. We add a '0' to the codeword when we move left in the binary tree and a '1' when we move right in the binary tree. We assign codes to the leaf nodes which represent the input characters.
 
 For example :
@@ -89,48 +89,49 @@ We move back to the root.
 We move back to the root.
 
 Decoded String = "ABACA"
-*</pre>
-*/
+ * </pre>
+ */
 public class TreeHuffmanDecoding {
 
 	private static class Node {
-		public  int frequency; // the frequency of this tree
-		public  char data;
-		public  Node left, right;
-	} 
+		public int frequency; // the frequency of this tree
+		public char data;
+		public Node left, right;
+	}
 
 	static int intCurrentIndex = 0;
 
-	void decode(String string, Node node)  {
+	void decode(String string, Node node) {
 		/* iterate the string */
-		for (;intCurrentIndex < string.length();){
-			print(node,string);           
-		}       
+		for (; intCurrentIndex < string.length();) {
+			print(node, string);
+		}
 	}
 
-	void print (Node node, String string){
-		if (null == node.left && null == node.right ){
-			/* we are on a lef */
-			System.out.printf("%s",node.data);
+	void print(Node node, String string) {
+		if (null == node.left && null == node.right) {
+			/* we are on a left */
+			System.out.printf("%s", node.data);
 			/* noting more to do */
 			return;
 		}
 
-		/* we are not in a leaf, so we need to know the next step */	
-		char c =  string.charAt(intCurrentIndex);
-		      
-		if (c == '0') {
-		//  System.out.printf("index=%d, c=%s, left %s\n", intCurrentIndex, c , node.left);
-		++intCurrentIndex;
-		print(node.left, string);
-		} 
+		/* we are not in a leaf, so we need to know the next step */
+		char c = string.charAt(intCurrentIndex);
 
-		if (c == '1') {
-		//  System.out.printf("index=%d, c=%s, right %s\n", intCurrentIndex, c, node.right);
-		++intCurrentIndex;
-		print(node.right, string);
+		if (c == '0') {
+			// System.out.printf("index=%d, c=%s, left %s\n", intCurrentIndex, c
+			// , node.left);
+			++intCurrentIndex;
+			print(node.left, string);
 		}
 
+		if (c == '1') {
+			// System.out.printf("index=%d, c=%s, right %s\n", intCurrentIndex,
+			// c, node.right);
+			++intCurrentIndex;
+			print(node.right, string);
+		}
 
 	}
 }

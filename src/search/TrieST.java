@@ -172,8 +172,7 @@ public class TrieST<Value> {
 		return results;
 	}
 
-	private void collect(Node x, StringBuilder prefix, String pattern,
-			Queue<String> results) {
+	private void collect(Node x, StringBuilder prefix, String pattern, Queue<String> results) {
 		if (x == null)
 			return;
 		int d = prefix.length();
