@@ -20,7 +20,7 @@ public class InsertNodeAtTheTail {
     System.out.println(n);
   }
 
-  public static Node insertNodeAtTail(Node head, int data) { 
+  public static Node insertNodeAtTail(Node head, int data) {
     Node node = head;
     while (null != node.next){
       node = node.next;
@@ -33,12 +33,16 @@ public class InsertNodeAtTheTail {
   }
 
   public static Node insertNodeAtTailRecursive(Node head, int data) {
-    if (null != head.next){
-      insertNodeAtTailRecursive( head.next, data);
-    } else {
+    if (null == head){
+      Node newNode = new Node();
+      newNode.data = data;
+      head = newNode;
+    } else if (null == head.next){
       Node newNode = new Node();
       newNode.data = data;
       head.next = newNode;
+    } else {
+      insertNodeAtTailRecursive( head.next, data);
     }
     return head;
   }

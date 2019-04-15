@@ -22,7 +22,7 @@ public class MergeLinkedList {
 		MergeLinkedList m = new MergeLinkedList();
 		Node node = m.mergeListRecursive(headA, headB);
 		print(node);
-		
+
 		System.out.println("--");
 		// 1 -> 3 -> 5 -> 6 -> NULL
 		// 2 -> 4 -> 7 -> NULL
