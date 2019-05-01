@@ -13,10 +13,65 @@ public class Island {
           {0, 0, 1, 1, 0}
         };
 
-    int[][] result = new int[grid.length][grid[0].length];
+    //    int[][] result = new int[grid.length][grid[0].length];
     // island.recursiveTest(grid, 0, 0, result,0);
-    island.iterativeTest(grid, result);
-    island.printMatrix(result);
+    island.iterativeTest1(grid);
+    // island.printMatrix(result);
+  }
+
+  public boolean isLandAndIsInsideGrid(int[][] grid, int i, int j, int[][] result) {
+    return 0 <= i
+        && i < grid.length
+        && 0 <= j
+        && j < grid[i].length
+        // current position is land
+        && grid[i][j] == 1
+        // this is a new position
+        && result[i][j] == 0;
+  }
+
+  public void iterativeTest1(int[][] grid, int i, int j, int[][] result) {
+    result[i][j] = 1;
+    if (isLandAndIsInsideGrid(grid, i - 1, j, result)) {
+      iterativeTest1(grid, i - 1, j, result);
+    }
+    if (isLandAndIsInsideGrid(grid, i + 1, j, result)) {
+      iterativeTest1(grid, i + 1, j, result);
+    }
+    if (isLandAndIsInsideGrid(grid, i, j - 1, result)) {
+      iterativeTest1(grid, i, j - 1, result);
+    }
+    if (isLandAndIsInsideGrid(grid, i, j + 1, result)) {
+      iterativeTest1(grid, i, j + 1, result);
+    }
+
+    // this scenarios are not neccessary....
+    // if (isLandAndIsInsideGrid(grid, i - 1, j - 1, result)) {
+    //   iterativeTest1(grid, i - 1, j - 1, result);
+    // }
+    // if (isLandAndIsInsideGrid(grid, i + 1, j + 1, result)) {
+    //   iterativeTest1(grid, i + 1, j + 1, result);
+    // }
+    // if (isLandAndIsInsideGrid(grid, i + 1, j - 1, result)) {
+    //   iterativeTest1(grid, i + 1, j - 1, result);
+    // }
+    // if (isLandAndIsInsideGrid(grid, i - 1, j + 1, result)) {
+    //   iterativeTest1(grid, i - 1, j + 1, result);
+    // }
+  }
+
+  public int iterativeTest1(int[][] grid) {
+    int counter = 0;
+    int[][] result = new int[grid.length][grid[0].length];
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[i].length; j++) {
+        if (grid[i][j] == 1 && result[i][j] == 0) {
+          iterativeTest1(grid, i, j, result);
+          counter++;
+        }
+      }
+    }
+    return counter;
   }
 
   public void iterativeTest(int[][] grid, int[][] result) {
