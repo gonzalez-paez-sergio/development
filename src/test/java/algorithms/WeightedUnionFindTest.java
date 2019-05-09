@@ -1,5 +1,7 @@
 package algorithms;
 
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
 
 public class WeightedUnionFindTest {
@@ -65,5 +67,73 @@ public class WeightedUnionFindTest {
     unionFind.union(p, q);
     System.out.printf("WeightedUnionFindTest.test2 (%s,%s): ", p, q);
     unionFind.print();
+  }
+
+  // @Test
+  public void testTinyUF() {
+    // int N = StdIn.readInt();
+    In inn = new In("src/main/resources/algorithms/tinyUF.txt");
+    int N = inn.readInt();
+
+    WeightedUnionFind weightedUnionFind = new WeightedUnionFind(N);
+    while (!inn.isEmpty()) {
+      int p = inn.readInt();
+      int q = inn.readInt();
+      weightedUnionFind.union(p, q);
+      //     weightedUnionFind.print();
+      // System.out.println(p + " " + q);
+      // System.out.println(weightedUnionFind.count() + " components");
+    }
+  }
+
+  // @Test
+  public void testMediumUF() {
+    // int N = StdIn.readInt();
+    In inn = new In("src/main/resources/algorithms/mediumUF.txt");
+    int N = inn.readInt();
+
+    WeightedUnionFind weightedUnionFind = new WeightedUnionFind(N);
+    while (!inn.isEmpty()) {
+      int p = inn.readInt();
+      int q = inn.readInt();
+      weightedUnionFind.union(p, q);
+      //    weightedUnionFind.print();
+      // System.out.println(p + " " + q);
+      // System.out.println(weightedUnionFind.count() + " components");
+    }
+  }
+
+  // @Test
+  public void testLargeUF() {
+    // int N = StdIn.readInt();
+    In inn = new In("src/main/resources/algorithms/largeUF.txt");
+    int N = inn.readInt();
+
+    WeightedUnionFind weightedUnionFind = new WeightedUnionFind(N);
+    while (!inn.isEmpty()) {
+      int p = inn.readInt();
+      int q = inn.readInt();
+      weightedUnionFind.union(p, q);
+      //   weightedUnionFind.print();
+      // System.out.println(p + " " + q);
+    }
+    System.out.println(weightedUnionFind.count() + " components");
+  }
+
+  @Test
+  public void testLargeRandomly() {
+    // int N = StdIn.readInt();
+    int MAX = 1_000_000_000;
+    int[] a = new int[MAX];
+    for (int i = 0; i < MAX; i++) a[i] = StdRandom.uniform(0, MAX);
+
+    WeightedUnionFind weightedUnionFind = new WeightedUnionFind(MAX);
+    for (int i = 0; i < MAX; i++) {
+      int p = StdRandom.uniform(0, MAX);
+      int q = StdRandom.uniform(0, MAX);
+      weightedUnionFind.union(p, q);
+    }
+
+    System.out.println(weightedUnionFind.count() + " components");
   }
 }

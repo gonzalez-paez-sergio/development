@@ -28,14 +28,14 @@ public class WeightedUnionFind {
   // connect   1 & 7 means  this.arr[1] = 7
   //  0 1 2 3 4 5 6 7 8 9
   // |7|1|2|3|4|6|6|7|8|9|
-  void union(int p, int q) {
-    System.out.printf("will union %s and %s\n", p, q);
+  void connect(int p, int q) {
+    // System.out.printf("will union %s and %s\n", p, q);
     if (!connected(p, q)) {
       int rootp = root(p);
       int rootq = root(q);
-      System.out.printf(
-          "root of %s is %s,size:%s, root of %s is %s,size:%s\n",
-          p, rootp, size[rootp], q, rootq, size[rootq]);
+      // System.out.printf(
+      // "root of %s is %s,size:%s, root of %s is %s,size:%s\n",
+      // p, rootp, size[rootp], q, rootq, size[rootq]);
       if (size[rootp] < size[rootq]) {
         // p branch is bigger than q branch
         this.arr[rootp] = rootq;
@@ -50,7 +50,7 @@ public class WeightedUnionFind {
     }
   }
 
-  private boolean connected(int p, int q) {
+  boolean connected(int p, int q) {
     return root(p) == root(q);
   }
 
@@ -82,5 +82,9 @@ public class WeightedUnionFind {
     IntStream.range(0, size.length).forEach(i -> System.out.printf("%s ", size[i]));
     System.out.printf("components %s ", this.components);
     System.out.println();
+  }
+
+  public int count() {
+    return components;
   }
 }
