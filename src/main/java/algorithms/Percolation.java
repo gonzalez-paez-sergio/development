@@ -5,20 +5,20 @@ public class Percolation {
   private boolean[] grid;
   private WeightedUnionFind wuf;
 
-  public Percolation(int n) {
+  private Percolation(int n) {
     this.size = n;
     // create n-by-n grid, with all sites blocked
     this.grid = new boolean[n * n + 2];
     this.wuf = new WeightedUnionFind(n * n + 2);
   }
 
-  public void open(int row, int col) { // open site (row, col) if it is not open already
+  private void open(int row, int col) { // open site (row, col) if it is not open already
     int pos = size * row + col;
     this.grid[pos] = true;
     connectOpenedN(row, col);
   }
 
-  public void connectOpenedN(int row, int col) { // open site (row, col) if it is not open already
+  private void connectOpenedN(int row, int col) { // open site (row, col) if it is not open already
     if (row == 0) {
       this.connectTop(row, col);
     } else {
@@ -30,12 +30,12 @@ public class Percolation {
     } else {
       this.connect(row, col, row + 1, col);
     }
-    
+
     this.connect(row, col, row, col - 1);
     this.connect(row, col, row, col + 1);
   }
 
-  public void connect(
+  void connect(
       int row, int col, int row1, int col1) { // open site (row, col) if it is not open already
     if (0 <= row
         && row < size
@@ -53,26 +53,26 @@ public class Percolation {
     }
   }
 
-  public void connectTop(int row, int col) { // open site (row, col) if it is not open already
+  void connectTop(int row, int col) { // open site (row, col) if it is not open already
     if (0 <= row && row < size && 0 <= col && col < size && isOpen(row, col)) {
       int pos = size * row + col;
       this.wuf.connect(pos, size * size);
     }
   }
 
-  public void connectBottom(int row, int col) { // open site (row, col) if it is not open already
+  void connectBottom(int row, int col) { // open site (row, col) if it is not open already
     if (0 <= row && row < size && 0 <= col && col < size && isOpen(row, col)) {
       int pos = size * row + col;
       this.wuf.connect(pos, size * size + 1);
     }
   }
 
-  public boolean isOpen(int row, int col) { // is site (row, col) open?
+  private boolean isOpen(int row, int col) { // is site (row, col) open?
     int pos = size * row + col;
     return this.grid[pos];
   }
 
-  public boolean isFull(int row, int col) { // is site (row, col) full?
+  boolean isFull(int row, int col) { // is site (row, col) full?
     int top = size * size;
     int pos = size * row + col;
     return wuf.connected(top, pos);
@@ -82,7 +82,7 @@ public class Percolation {
     return 0;
   }
 
-  public boolean percolates() { // does the system percolate?
+  boolean percolates() { // does the system percolate?
     int top = size * size;
     int bottom = size * size + 1;
     return wuf.connected(top, bottom);
