@@ -45,8 +45,8 @@ public class WeightedUnionFind {
         this.size[rootp] += this.size[rootq];
       }
       this.components--;
-    } else {
-      System.out.printf("%s, %s are already connected\n", p, q);
+      // } else {
+      // System.out.printf("%s, %s are already connected\n", p, q);
     }
   }
 

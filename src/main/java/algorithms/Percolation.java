@@ -1,21 +1,27 @@
 package algorithms;
 
+import edu.princeton.cs.algs4.StdRandom;
+
 public class Percolation {
   private int size;
   private boolean[] grid;
   private WeightedUnionFind wuf;
+  private int numberOfOpenSites;
 
-  private Percolation(int n) {
+  Percolation(int n) {
     this.size = n;
     // create n-by-n grid, with all sites blocked
     this.grid = new boolean[n * n + 2];
     this.wuf = new WeightedUnionFind(n * n + 2);
   }
 
-  private void open(int row, int col) { // open site (row, col) if it is not open already
-    int pos = size * row + col;
-    this.grid[pos] = true;
-    connectOpenedN(row, col);
+  void open(int row, int col) { // open site (row, col) if it is not open already
+    if (!isOpen(row, col)) {
+      int pos = size * row + col;
+      this.grid[pos] = true;
+      this.numberOfOpenSites++;
+      connectOpenedN(row, col);
+    }
   }
 
   private void connectOpenedN(int row, int col) { // open site (row, col) if it is not open already
@@ -79,7 +85,7 @@ public class Percolation {
   }
 
   public int numberOfOpenSites() { // number of open sites
-    return 0;
+    return this.numberOfOpenSites;
   }
 
   boolean percolates() { // does the system percolate?
@@ -89,13 +95,27 @@ public class Percolation {
   }
 
   public static void main(String[] args) { // test client (optional)
-    Percolation percolation = new Percolation(3);
-    percolation.open(0, 0);
-    System.out.println(percolation.isFull(0, 0));
-    percolation.open(1, 0);
-    System.out.println(percolation.isFull(1, 0));
-    percolation.open(2, 0);
-    System.out.println(percolation.isFull(2, 0));
-    System.out.println(percolation.percolates());
+    int size = 100;
+    Percolation percolation = new Percolation(size);
+    while (!percolation.percolates()) {
+      int row = StdRandom.uniform(0, size);
+      int col = StdRandom.uniform(0, size);
+      percolation.open(row, col);
+      // System.out.println(
+      //     "number of open sites ["
+      //         + percolation.numberOfOpenSites()
+      //         + "]["
+      //         + (percolation.numberOfOpenSites() * 100) / (size * size)
+      //         + "]");
+    }
+    System.out.println(
+        "number of open sites ["
+            + percolation.numberOfOpenSites()
+            + "]["
+            + (percolation.numberOfOpenSites() * 100) / (size * size)
+            + "]");
   }
 }
+
+// size * size - 100
+// nos         - x
