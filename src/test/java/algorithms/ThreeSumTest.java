@@ -73,24 +73,46 @@ public class ThreeSumTest {
   }
 
   @Test
-  public void test4KintsEnhancedWithSortedArray() {
+  public void test4KintsEnhancedEnhanced() {
     Stopwatch timer = new Stopwatch();
     int[] a = In.readInts("src/main/resources/algorithms/4Kints.txt");
     ThreeSum threeSum = new ThreeSum();
-    int result = threeSum.countEnhancedWithSortedArray(a);
+    int result = threeSum.countEnhancedEnhanced(a);
     double time = timer.elapsedTime();
-    System.out.println("test4KintsEnhancedWithSortedArray:" + result + ", time:" + time);
-    Assert.assertEquals(12121, result);
+    System.out.println("test4KintsEnhancedEnhanced:" + result + ", time:" + time);
+    Assert.assertEquals(4039, result);
   }
 
   @Test
-  public void test10intsEnhancedWithSortedArray() {
+  public void test8Kints() {
     Stopwatch timer = new Stopwatch();
-    int[] a = new int[] {5, 8, 3, 1, 3, 8, 8, 9, 0};
+    int[] a = In.readInts("src/main/resources/algorithms/8Kints.txt");
     ThreeSum threeSum = new ThreeSum();
-    int result = threeSum.countEnhancedWithSortedArray(a);
+    int result = threeSum.count(a);
     double time = timer.elapsedTime();
-    System.out.println("test4KintsEnhancedWithSortedArray:" + result + ", time:" + time);
-    Assert.assertEquals(0, result);
+    System.out.println("test8KintsEnhanced:" + result + ", time:" + time);
+    Assert.assertEquals(32074, result);
+  }
+
+  @Test
+  public void test8KintsEnhanced() {
+    Stopwatch timer = new Stopwatch();
+    int[] a = In.readInts("src/main/resources/algorithms/8Kints.txt");
+    ThreeSum threeSum = new ThreeSum();
+    int result = threeSum.countEnhanced(a);
+    double time = timer.elapsedTime();
+    System.out.println("test8KintsEnhanced:" + result + ", time:" + time);
+    Assert.assertEquals(32074, result);
+  }
+
+  @Test
+  public void test8KintsEnhancedEnhanced() {
+    Stopwatch timer = new Stopwatch();
+    int[] a = In.readInts("src/main/resources/algorithms/8Kints.txt");
+    ThreeSum threeSum = new ThreeSum();
+    int result = threeSum.countEnhancedEnhanced(a);
+    double time = timer.elapsedTime();
+    System.out.println("test8KintsEnhanced:" + result + ", time:" + time);
+    Assert.assertEquals(32074, result);
   }
 }
