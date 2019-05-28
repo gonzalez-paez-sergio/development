@@ -123,7 +123,7 @@ public class WeightedUnionFindTest {
   @Test
   public void testLargeRandomly() {
     // int N = StdIn.readInt();
-    int MAX = 1_000_000_000;
+    int MAX = 1_000_000;
     int[] a = new int[MAX];
     for (int i = 0; i < MAX; i++) a[i] = StdRandom.uniform(0, MAX);
 

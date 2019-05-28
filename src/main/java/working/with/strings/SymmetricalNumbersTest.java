@@ -45,6 +45,6 @@ public class SymmetricalNumbersTest {
   @Test
   public void testNonSymetricalNumberWithOddNumberOfDigitsWNine() {
     StringBuffer stringLine = new StringBuffer("12911");
-    assertEquals("13031", SymmetricalNumbers.findNextSymmetricalNumber(stringLine));
+    assertEquals("12921", SymmetricalNumbers.findNextSymmetricalNumber(stringLine));
   }
 }

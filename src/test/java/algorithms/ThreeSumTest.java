@@ -2,8 +2,10 @@ package algorithms;
 
 import edu.princeton.cs.algs4.In;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class ThreeSumTest {
 
   @Test

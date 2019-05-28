@@ -9,7 +9,7 @@ public class BinarySearchTest {
 
   @Test
   public void test() {
-    int[] whitelist = In.readInts("resources/algorithms/tinyW.txt");
+    int[] whitelist = In.readInts("src/main/resources//algorithms/tinyW.txt");
     Arrays.sort(whitelist);
     BinarySearch binarySearch = new BinarySearch();
     int[] keys = new int[] {10, 3030, 29};
