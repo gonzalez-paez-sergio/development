@@ -1,18 +1,20 @@
 package algorithms.stacks;
 
+import algorithms.NodeOfString;
+
 public class StackOfStringsLinkedList {
   private int size = 0;
-  private Node n = new Node();
+  private NodeOfString n = new NodeOfString();
 
   // create an empty stack
   StackOfStringsLinkedList() {
-    this.n = new Node();
+    this.n = new NodeOfString();
   }
 
   // insert a new string onto stack
   void push(String item) {
-    Node newNode = this.n;
-    this.n = new Node();
+    NodeOfString newNode = this.n;
+    this.n = new NodeOfString();
     this.n.item = item;
     this.n.next = newNode;
     this.size++;
@@ -37,10 +39,5 @@ public class StackOfStringsLinkedList {
   // number of strings on the stack
   int size() {
     return this.size;
-  }
-
-  class Node {
-    String item;
-    Node next;
   }
 }
