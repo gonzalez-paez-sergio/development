@@ -1,6 +1,6 @@
 package algorithms.sorting;
 
-public class InsertionSort  extends Sort{
+public class InsertionSort extends Sort {
 
   public static <T extends Comparable> void sort(T[] arr) {
     for (int i = 0; i < arr.length; i++) {
